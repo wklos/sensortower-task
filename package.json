@@ -7,7 +7,7 @@
     "lint:fix": "npx eslint . --fix",
     "prettier:check": "npx prettier --check .",
     "prettier:write": "npx prettier --write .",
-    "test": "mocha tests/*.spec.js --timeout 10000"
+    "test": "mocha tests/*.spec.js --timeout 20000 --reporter mochawesome --reporter-options o=./reports/ --reporter-options t='Sensor Tower Tests' --reporter-options charts=true  --reporter-options code=false --reporter-options inline=true"
   },
   "keywords": [
     "mocha",
@@ -17,7 +17,6 @@
   "author": "Wojtek Kłos <wojtekklos@gmail.com>",
   "license": "ISC",
   "devDependencies": {
-    "axios": "0.27.2",
     "chai": "4.3.6",
     "dotenv": "16.0.1",
     "eslint": "8.22.0",

@@ -78,6 +78,10 @@ npm run lint:fix
 
 ## Running tests
 
+### Set AUTH_TOKEN
+
+GET your auth token from https://app.sensortower.com/users/edit/api-settings and enter it in .env file
+
 ### Run all tests
 
 ```bash
@@ -102,4 +106,16 @@ After executing `npm run test`/`npm test` script 2 test reports (1st: HTML file 
 
 ## QA Notes
 
+- Tests are written in a 'dynamic' way, there is an array of test data that is passed to actual test.
+
+```javascript
+['value_1', 'value_2'].forEach(testData => {
+    it('test', () => {
+        ...
+    });
+});
+```
+
 - While sending HTTP GET `https://api.sensortower.com/v1/ios/sales_report_estimates_comparison_attributes?comparison_attribute=absolute&time_range=week&measure=units&device_type=total&date=2021-01-04&auth_token={INSERT_YOUR_AUTH_TOKEN}&category=6000` not all apps listed in results have custom tag 'Primary Category' set to 'Business' (category code 6000 represents category name 'Business')
+
+- I'd suggest unifying the way how errors are returned for various fields, sometimes it's simple string, sometimes it's `[{title: 'error message'}]`
